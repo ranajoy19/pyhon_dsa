@@ -128,7 +128,7 @@ def is_bstUtil(node,max,min):
 
 
     
-tree = NodeTree.parse_tuple(((1, 3, None), 2, (3, 5, (6, 7, 8))))
+# tree = NodeTree.parse_tuple(((1, 3, None), 2, (3, 5, (6, 7, 8))))
 # tree = NodeTree.parse_tuple(((1,2,3),4,5))
 
 # print(inorder_traversal(tree))
@@ -138,7 +138,6 @@ tree = NodeTree.parse_tuple(((1, 3, None), 2, (3, 5, (6, 7, 8))))
 #     print("Is BST")
 # else:
 #     print("Not a BST")
-
 
 
 # find the value associated with given key in bst 
@@ -155,3 +154,39 @@ def find_value(tree,key):
 
 
 
+
+# chcek if the tree is balanced or not balanced
+
+
+
+def is_balanced(tree):
+
+    # Base condition
+    if tree is None:
+        return True
+    
+    # for left and right subtree height
+    lh = tree_height(tree.left)
+    rh = tree_height(tree.right)
+
+
+    if abs(lh - rh)<=1 and is_balanced(tree.left) is True and is_balanced(tree.right) is True:
+        return True
+     
+    # if we reach here means tree is not
+    # height-balanced tree
+    return False
+
+
+
+#                      2
+#                     / \
+#                    3    5
+#                       /   \
+#                      3     7
+#                       \     /\
+#                        4   6  8 
+
+# tree = NodeTree.parse_tuple((3,2,((0,3,3),5,(6,7,8))))
+
+# print(is_balanced(tree))
